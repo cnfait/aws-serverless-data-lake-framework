@@ -1,26 +1,25 @@
-[tool.poetry]
-name = "sdlf.dataset"
+[project]
+name = "sdlf-dataset"
 version = "2.10.0"
 description = "AWS Serverless Data Lake Framework"
-authors = ["Amazon Web Services"]
-license = "MIT-0"
 readme = "README.md"
-repository = "https://github.com/awslabs/aws-serverless-data-lake-framework/"
-documentation = "https://sdlf.readthedocs.io/en/latest/"
-
-packages = [
-    { include = "**/*", from = "src", to = "sdlf" },
+authors = [
+    { name = "Amazon Web Services" }
+]
+license = "MIT-0"
+requires-python = ">=3.12"
+dependencies = [
+    "aws-cdk-aws-glue-alpha>=2.187.0a0",
+    "aws-cdk-aws-scheduler-alpha>=2.186.0a0",
 ]
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/"]
 exclude = ["**/*.yaml"]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-aws-cdk-lib = "^2.159.1"
-constructs = ">=10.0.0,<11.0.0"
-aws-cdk-aws-glue-alpha = "^2.159.1a0"
-aws-cdk-aws-scheduler-alpha = "^2.159.1a0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.hatch.build.targets.wheel.sources]
+"src" = "sdlf"

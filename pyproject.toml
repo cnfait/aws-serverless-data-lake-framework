@@ -1,3 +1,27 @@
+[project]
+name = "sdlf"
+version = "2.10.0"
+description = "AWS Serverless Data Lake Framework"
+readme = "README.md"
+authors = [
+    { name = "Amazon Web Services" }
+]
+license = "MIT-0"
+requires-python = ">=3.12"
+dependencies = [
+    "aws-cdk-lib==2.187.0",
+    "constructs>=10.0.0,<11.0.0",
+]
+
+[project.urls]
+Documentation = "https://sdlf.readthedocs.io/en/latest/"
+Repository = "https://github.com/aws-solutions-library-samples/data-lakes-on-aws"
+Workshop = "https://sdlf.workshop.aws"
+
+[tool.uv.workspace]
+members = ["sdlf-*"]
+exclude = ["sdlf-cicd", "sdlf-monitoring", "sdlf-stageA", "sdlf-stageB", "sdlf-utils", "sdlf-datalakeLibrary", "sdlf-stage-dataquality"]
+
 [tool.ruff]
 extend-exclude = ["sdlf-cicd/sam-translate.py"]
 line-length = 120
